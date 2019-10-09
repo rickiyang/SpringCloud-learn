@@ -1,0 +1,13 @@
+server:
+  port: 8763
+spring:
+  application:
+    name: ribbon-consumer
+  main:
+    allow-bean-definition-overriding: true
+
+eureka:
+  client:
+    register-with-eureka: false #客户端不注册到eureka，只是进行服务的调用
+    service-url:
+      defaultZone: http://localhost:8761/eureka/

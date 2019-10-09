@@ -1,0 +1,27 @@
+server:
+  port: 8762
+spring:
+  application:
+    name: eureka-client
+  main:
+    allow-bean-definition-overriding: true
+#  cloud:
+#    inetutils:
+#      # 忽略指定网卡（支持正则），假设你的电脑有 VM 那么该选项是非常有用的一个选项
+#      ignored-interfaces:             #忽略 docker0 网卡以及 veth 开头的网卡
+#        - docker0
+#        - veth.*
+#      preferred-networks:             # 使用指定网络地址，选择 eth0 网卡，当然也可以直接写 IP （192.168）
+#        - eth0
+eureka:
+  instance:
+    # 此处建议写，不写默认是机器名
+    prefer-ip-address: true
+    # 优先级小于 application.properties ，如果你想知道当前注册上去的版本必须使用 application.properties 中的配置写法
+    # 因为 bootstrap.yml 最早初始化，那时候还无法读取到 pom.xml 中的属性
+    instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
+    # ip-address 强行指定此实例 IP ，不是很推荐，绝大多数情况 prefer-ip-address 与  preferred-networks 配合都够用了
+  client:
+    service-url:
+      # 划重点：此处的 defaultZone 千万别写成 default-zone
+      defaultZone: http://localhost:8761/eureka/

@@ -1,0 +1,20 @@
+server:
+  port: 8761
+spring:
+  main:
+    allow-bean-definition-overriding: true
+  application:
+    name: eureka-server
+eureka:
+  instance:
+    prefer-ip-address: true
+  server:
+    enable-self-preservation: false
+    eviction-interval-timer-in-ms: 60000
+    remote-region-registry-fetch-interval: 5
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://localhost:${server.port}/eureka/
+    registry-fetch-interval-seconds: 5
