@@ -28,7 +28,7 @@ public class DemoController {
         return demoService.add(person);
     }
 
-    @GetMapping(name = "getPerson/{id}")
+    @GetMapping("getPerson/{id}")
     public String getPerson(@PathVariable("id") Integer id) {
         return demoService.getPerson(id);
     }

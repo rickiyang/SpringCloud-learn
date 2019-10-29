@@ -1,10 +1,9 @@
 package com.rickiyang.learn.controller;
 
+import com.rickiyang.learn.entity.Person;
 import com.rickiyang.learn.service.HelloRemote;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 /**
@@ -27,10 +26,25 @@ public class ConsumerController {
         return helloRemote.hello(name);
     }
 
+    /**
+     * 传统的 Ribbon方式请求
+     * @param name
+     * @return
+     */
     @GetMapping("/hello1/{name}")
     public String hello1(@PathVariable("name") String name){
         String url = "http://"+ APP_NAME +"/hello/"+name;
         return restTemplate.getForObject(url,String.class);
+    }
+
+    @PostMapping(name ="/add",produces = "application/json; charset=UTF-8")
+    public String addPerson(@RequestBody Person person) {
+        return helloRemote.addPerson(person);
+    }
+
+    @GetMapping("/getPerson/{id}")
+    public String getPerson(@PathVariable("id") Integer id){
+        return helloRemote.getPerson(id);
     }
 
 }

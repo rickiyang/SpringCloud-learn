@@ -23,7 +23,7 @@ public class DemoController {
         return JSON.toJSONString(person);
     }
 
-    @GetMapping(name ="getPerson/{id}")
+    @GetMapping("/getPerson/{id}")
     public String getPerson(@PathVariable("id") Integer id){
         return String.join("-",id.toString(),"-name:xiaoming","age:23","sex:女");
     }
