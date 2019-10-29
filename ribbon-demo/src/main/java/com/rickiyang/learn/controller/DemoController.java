@@ -1,10 +1,8 @@
 package com.rickiyang.learn.controller;
 
+import com.rickiyang.learn.entity.Person;
 import com.rickiyang.learn.service.DemoService;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 
@@ -21,7 +19,17 @@ public class DemoController {
 
 
     @RequestMapping("/hello/{name}")
-    public String hello(@PathVariable("name") String name){
+    public String hello(@PathVariable("name") String name) {
         return demoService.hello(name);
+    }
+
+    @PostMapping(name = "add", produces = "application/json; charset=UTF-8")
+    public String addPerson(Person person) {
+        return demoService.add(person);
+    }
+
+    @GetMapping(name = "getPerson/{id}")
+    public String getPerson(@PathVariable("id") Integer id) {
+        return demoService.getPerson(id);
     }
 }

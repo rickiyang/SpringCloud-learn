@@ -1,8 +1,8 @@
 package com.rickiyang.learn.controller;
 
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.alibaba.fastjson.JSON;
+import com.rickiyang.learn.entity.Person;
+import org.springframework.web.bind.annotation.*;
 
 /**
  * @author rickiyang
@@ -14,7 +14,19 @@ public class DemoController {
 
 
     @RequestMapping("/hello/{name}")
-    public String hello(@PathVariable("name") String name){
+    public String hello(@PathVariable("name") String name) {
         return "hello " + name;
     }
+
+
+    @PostMapping(name ="add",produces = "application/json; charset=UTF-8")
+    public String addPerson(Person person){
+        return JSON.toJSONString(person);
+    }
+
+    @GetMapping(name ="getPerson/{id}")
+    public String getPerson(@PathVariable("id") Integer id){
+        return String.join("-",id.toString(),"-name:xiaoming","age:23","sex:女");
+    }
+
 }

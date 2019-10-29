@@ -1,4 +1,3 @@
-
 server:
   port: 8765
 spring:
@@ -8,13 +7,13 @@ spring:
     allow-bean-definition-overriding: true
 eureka:
   instance:
-    # ´Ë´¦½¨ÒéĞ´£¬²»Ğ´Ä¬ÈÏÊÇ»úÆ÷Ãû
+    # ï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ï¿½ï¿½Ğ´Ä¬ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½ï¿½ï¿½
     prefer-ip-address: true
-    # ÓÅÏÈ¼¶Ğ¡ÓÚ application.properties £¬Èç¹ûÄãÏëÖªµÀµ±Ç°×¢²áÉÏÈ¥µÄ°æ±¾±ØĞëÊ¹ÓÃ application.properties ÖĞµÄÅäÖÃĞ´·¨
-    # ÒòÎª bootstrap.yml ×îÔç³õÊ¼»¯£¬ÄÇÊ±ºò»¹ÎŞ·¨¶ÁÈ¡µ½ pom.xml ÖĞµÄÊôĞÔ
+    # ï¿½ï¿½ï¿½È¼ï¿½Ğ¡ï¿½ï¿½ application.properties ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½Ç°×¢ï¿½ï¿½ï¿½ï¿½È¥ï¿½Ä°æ±¾ï¿½ï¿½ï¿½ï¿½Ê¹ï¿½ï¿½ application.properties ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½
+    # ï¿½ï¿½Îª bootstrap.yml ï¿½ï¿½ï¿½ï¿½ï¿½Ê¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½ï¿½Ş·ï¿½ï¿½ï¿½È¡ï¿½ï¿½ pom.xml ï¿½Ğµï¿½ï¿½ï¿½ï¿½ï¿½
     instance-id: ${spring.cloud.client.ip-address}:${spring.application.instance_id:${server.port}}
-    # ip-address Ç¿ĞĞÖ¸¶¨´ËÊµÀı IP £¬²»ÊÇºÜÍÆ¼ö£¬¾ø´ó¶àÊıÇé¿ö prefer-ip-address Óë  preferred-networks ÅäºÏ¶¼¹»ÓÃÁË
+    # ip-address Ç¿ï¿½ï¿½Ö¸ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½ IP ï¿½ï¿½ï¿½ï¿½ï¿½Çºï¿½ï¿½Æ¼ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ prefer-ip-address ï¿½ï¿½  preferred-networks ï¿½ï¿½Ï¶ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
   client:
     service-url:
-      # »®ÖØµã£º´Ë´¦µÄ defaultZone Ç§Íò±ğĞ´³É default-zone
+      # ï¿½ï¿½ï¿½Øµã£ºï¿½Ë´ï¿½ï¿½ï¿½ defaultZone Ç§ï¿½ï¿½ï¿½Ğ´ï¿½ï¿½ default-zone
       defaultZone: http://localhost:8761/eureka/
