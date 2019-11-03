@@ -9,3 +9,32 @@ eureka:
   client:
     service-url:
       defaultZone : http://localhost:8761/eureka/
+
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 5000
+        readTimeout: 5000
+        loggerLevel: basic
+  compression:
+    request:
+      enable: true  #配置请求支持GZIP压缩，默认为false
+      mime-types: text/xml, application/xml, application/json  #配置压缩支持的Mime Type
+      min-request-size: 2048 #配置压缩数据大小的上下限
+    reponse:
+      enable: true #配置响应支持GZIP压缩，默认为false
+
+
+# 单独对某一个client做配置
+#feign:
+#  client:
+#    config:
+#      ##对名字为 github-client 的feign client做配置
+#      eureka-client1:                                # 对应eureka-client1类的@FeignClient的name属性值
+#        decoder404: false                           # 是否解码404
+#        loggerLevel: full                           # 日志记录级别
+#      eureka-client2:                                # 对应eureka-client1类的@FeignClient的name属性值
+#        decoder404: false                           # 是否解码404
+#        loggerLevel: full                           # 日志记录级别
