@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.*;
  * @date: 2019/10/5
  * @description:
  */
-//@FeignClient(name= "eureka-client",fallback = HelloFailBackService.class)
-@FeignClient(name= "eureka-client",fallback = HelloFailBackFacgtory.class)
+@FeignClient(name= "eureka-client",fallback = HelloFailBackService.class)
+//@FeignClient(name= "eureka-client",fallback = HelloFailBackFacgtory.class)
 public interface HelloRemote {
 
     @RequestMapping(value = "/hello/{name}")

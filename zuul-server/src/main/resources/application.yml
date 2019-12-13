@@ -1,0 +1,31 @@
+server:
+  port: 8767
+spring:
+  application:
+    name: zuul-server
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/,http://localhost:8762/eureka/,http://localhost:8763/eureka/
+    instance:
+      lease-renewal-interval-in-seconds: 2 # 设置心跳的时间间隔（默认是30秒）
+      lease-expiration-duration-in-seconds: 5 # 如果现在超过了5秒的间隔（默认是90秒）
+      prefer-ip-address: true     # 访问的路径变为IP地址
+
+zuul:
+  #所有服务路径前统一加上前缀
+  prefix: /api
+  # 排除某些路由, 支持正则表达式
+  ignored-patterns:
+    - /**/modify/pwd
+  # 排除服务
+  ignored-services: user-center
+  routes:
+    eureka-client:
+      path: /client1/**
+      serviceId: eureka-client
+
+
+
